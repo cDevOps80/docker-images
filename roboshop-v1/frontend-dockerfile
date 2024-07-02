@@ -1,6 +1,6 @@
 FROM nginx
 RUN apt update && \
-    apt install zip unzip && \
+    apt install  unzip && \
     rm -rf /usr/share/nginx/html/*
 WORKDIR /usr/share/nginx/html/
 ADD https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip .
