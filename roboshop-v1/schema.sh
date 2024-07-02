@@ -4,5 +4,5 @@
 
 mkdir -p /app
 curl -o /tmp/code.zip ${CODE_URL}
-uzip /tmp/code.zip -d /app
+unzip /tmp/code.zip -d /app
 mongo --host ${MONGO_DB_ADDRESS} < ${SCHEMA_FILE}
