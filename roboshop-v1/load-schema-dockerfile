@@ -1,6 +1,6 @@
 FROM redhat/ubi9
 RUN echo -e '[mongodb-org-7.0]\nname=MongoDB Repository\nbaseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/7.0/x86_64/\nenabled=1\ngpgcheck=0' > /etc/yum.repos.d/mongo.repo
-RUN dnf install git mongodb-mongosh -y
+RUN dnf install git mongodb-mongosh unzip -y
 COPY schema.sh /schema.sh
 ENTRYPOINT ["bash","/schema.sh"]
 
