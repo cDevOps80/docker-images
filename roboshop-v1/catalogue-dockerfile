@@ -3,4 +3,4 @@ RUN apt update && apt install unzip -y
 WORKDIR /app
 ADD https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip .
 RUN unzip catalogue-v3.zip && npm install
-CMD ["/bin/node","/app/server.js"]
+CMD ["node","/app/server.js"]
