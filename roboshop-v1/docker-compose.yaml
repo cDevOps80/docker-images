@@ -29,7 +29,7 @@ services:
     image: chaitu1812/mongo-rhel9
     networks: *net
 
-  user:
+  userd:
     image: chaitu1812/mongo-rhel9
     networks: *net
     depends_on: ["redis"]
