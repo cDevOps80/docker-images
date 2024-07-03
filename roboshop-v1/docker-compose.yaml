@@ -13,7 +13,7 @@ services:
       CODE_URL: "https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip"
       SCHEMA_FILE: "/app/db/master-data.js"
       MONGO_DB_ADDRESS: "mongodb"
-    networks: &net ["expense"]
+    networks: *net
     depends_on:
       - 'mongodb'
 

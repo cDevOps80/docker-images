@@ -5,4 +5,4 @@
 mkdir -p /app
 curl -o /tmp/code.zip ${CODE_URL}
 unzip /tmp/code.zip -d /app
-echo mongosh --host ${MONGO_DB_ADDRESS} < ${SCHEMA_FILE}
+mongosh --host ${MONGO_DB_ADDRESS} < ${SCHEMA_FILE}
