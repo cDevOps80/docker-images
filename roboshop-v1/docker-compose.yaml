@@ -14,8 +14,7 @@ services:
       SCHEMA_FILE: "/app/db/master-data.js"
       MONGO_DB_ADDRESS: "mongodb"
     networks: *net
-    depends_on:
-      - 'mongodb'
+    depends_on: ["mongodb"]
 
   catalogue:
     image: chaitu1812/catalogue-rhel9
