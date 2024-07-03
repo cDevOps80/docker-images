@@ -6,5 +6,6 @@
 mkdir -p /app
 curl -o /tmp/code.zip ${CODE_URL}
 unzip /tmp/code.zip -d /app
-mongosh --host ${MONGO_DB_ADDRESS} < ${SCHEMA_FILE}
+mongosh --host ${MONGO_DB_ADDRESS} < ${SCHEMA_FIL
+E}
 mongosh --host ${MONGO_DB_ADDRESS} < /tmp/user.js
