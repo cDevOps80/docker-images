@@ -34,7 +34,7 @@ services:
     networks: *net
     depends_on: ["redis"]
     environment:
-      - REDIS_URL="redis://redis:6379"
+      - REDIS_URL='redis://redis:6379'
       - MONGO_URL="mongodb://mongod:27017/users"
 
   redis:
