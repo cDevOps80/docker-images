@@ -12,18 +12,19 @@ services:
     environment:
       CODE_URL: "https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip"
       SCHEMA_FILE: "/app/db/master-data.js"
-      MONGO_DB_ADDRESS: "mongod"
-    depends_on: ["mongod"]
+      MONGO_DB_ADDRESS: "mongodb"
+    depends_on:
+      - 'mongodb'
 
   catalogue:
     image: chaitu1812/catalogue-rhel9
     networks: *net
-    depends_on: ["mongod"]
+    depends_on: ["mongodb"]
     environment:
       MONGO: "true"
-      MONGO_URL: "mongod"
+      MONGO_URL: "mongodb://mongodb:27017/catalogue"
 
-  mongod:
+  mongodb:
     image: chaitu1812/mongo-rhel9
     networks: *net
 
