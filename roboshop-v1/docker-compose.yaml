@@ -30,7 +30,7 @@ services:
     networks: *net
 
   userd:
-    image: chaitu1812/mongo-rhel9
+    image: chaitu1812/user-rhel9
     networks: *net
     depends_on: ["redis"]
     environment:
