@@ -21,7 +21,7 @@ services:
     depends_on: ["mongod"]
     environment:
       MONGO: "true"
-      MONGO_URL: "mongodb://mongod:27017/catalogue"
+      MONGO_URL: "mongod"
 
   mongod:
     image: chaitu1812/mongo-rhel9
