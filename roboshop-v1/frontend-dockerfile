@@ -1,6 +1,6 @@
 FROM nginx
 RUN apt update && \
-    apt install  unzip && \
+    apt install unzip && \
     rm -rf /usr/share/nginx/html/*
     rm -rf /etc/nginx/conf.d/*
 WORKDIR /usr/share/nginx/html/
