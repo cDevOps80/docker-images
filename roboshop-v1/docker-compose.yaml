@@ -4,6 +4,8 @@ services:
     image: chaitu1812/frontend-rhel9
     networks: &net ["expense"]
     depends_on: ["catalogue","user"]
+    ports:
+      - "80:80"
 
   load_schema:
     image: chaitu1812/load-schema-rhel9
