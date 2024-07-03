@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  frontend:
+    image: chaitu1812/frontend-rhel9
+    networks: &net ["expense"]
+    depends_on: []
+  load_schema:
+    image: chaitu1812/load-schema-rhel9
+    environment:
+      CODE_URL: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
+      SCHEMA_FILE: /app/db/master-data.js
+      MONGO_DB_ADDRESS: mongod
+    depends_on: ["mongod"]
+  catalogue:
+    image: chaitu1812/catalogue-rhel9
+    networks: *net
+    depends_on: ["mongod"]
+  mongod:
+    image: chaitu1812/mongo-rhel9
+    networks: *net
+  user:
+    image: chaitu1812/mongo-rhel9
+    networks: *net
+    depends_on: ["redis"]
+  redis:
+    image: chaitu1812/redis-rhel9
+    networks: *net
+
