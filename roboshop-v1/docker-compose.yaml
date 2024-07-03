@@ -13,6 +13,7 @@ services:
       CODE_URL: "https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip"
       SCHEMA_FILE: "/app/db/master-data.js"
       MONGO_DB_ADDRESS: "mongodb"
+    networks: &net ["expense"]
     depends_on:
       - 'mongodb'
 
@@ -27,18 +28,18 @@ services:
   mongodb:
     image: chaitu1812/mongo-rhel9
     networks: *net
-
-  user:
-    image: chaitu1812/mongo-rhel9
-    networks: *net
-    depends_on: ["redis"]
-    environment:
-      - REDIS_URL="redis://redis:6379"
-      - MONGO_URL="mongodb://mongod:27017/users"
-
-  redis:
-    image: chaitu1812/redis-rhel9
-    networks: *net
+#
+#  user:
+#    image: chaitu1812/mongo-rhel9
+#    networks: *net
+#    depends_on: ["redis"]
+#    environment:
+#      - REDIS_URL="redis://redis:6379"
+#      - MONGO_URL="mongodb://mongod:27017/users"
+#
+#  redis:
+#    image: chaitu1812/redis-rhel9
+#    networks: *net
 
 networks:
   expense:
