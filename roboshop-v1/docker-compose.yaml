@@ -9,7 +9,7 @@ services:
     image: chaitu1812/load-schema-rhel9
     environment:
       CODE_URL: "https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip"
-      SCHEMA_FILE: ""/app/db/master-data.js"
+      SCHEMA_FILE: "/app/db/master-data.js"
       MONGO_DB_ADDRESS: "mongod"
     depends_on: ["mongod"]
 
