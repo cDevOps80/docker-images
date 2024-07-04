@@ -2,7 +2,7 @@ version: "3.4"
 services:
   frontend:
     image: chaitu1812/frontend-rhel9
-    networks: &net ["expense"]
+    networks: &net ["roboshop"]
     depends_on: ["catalogue","userd","cart","shipping"]
     ports:
       - "80:80"
