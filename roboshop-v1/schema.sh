@@ -21,6 +21,7 @@ if [ "${COMPONENT}" == "mysql" ]; then
 mkdir -p /app
 curl -o /tmp/code.zip ${CODE_URL}
 unzip /tmp/code.zip -d /app
+sleep 20
 for i in $(ls ${SCHEMA_FILE}) ; do  mysql -h ${MYSQL_ADDRESS}  -u${MYSQL_USER} -p${MYSQL_PASSWORD} < ${SCHEMA_FILE}/${i} ; done
 
 fi
