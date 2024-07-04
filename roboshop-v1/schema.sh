@@ -15,11 +15,11 @@ if [ "${component}" == "mysql" ]; then
 
 [ -z "${CODE_URL}" ] && echo "GIT_HUB_URL -- env parameter is missing" && exit 1
 [ -z "${SCHEMA_FILE}" ] && echo "SCHEMA_FILE -- env parameter is missing" && exit 1
-[ -z "${MYSQL_ADDRESS}" ] && echo "MONGO_DB_ADDRESS -- env parameter is missing" && exit 1
+[ -z "${MYSQL_ADDRESS}" ] && echo "MYSQL_ADDRESS -- env parameter is missing" && exit 1
 mkdir -p /app
 curl -o /tmp/code.zip ${CODE_URL}
 unzip /tmp/code.zip -d /app
-for i in $(ls /app/db) ; do echo "mysql -h 172.17.0.3  -uroot -pRoboShop@1 < /app/db/${i}" ;done
+for i in $(ls ${SCHEMA_FILE}) ; do mysql -h ${MYSQL_ADDRESS}  -u${MYSQL_USER} -p${MYSQL_PASSWORD} < ${SCHEMA_FILE}/${i} ; done
 
 fi
 

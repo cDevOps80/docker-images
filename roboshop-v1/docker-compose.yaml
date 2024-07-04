@@ -10,6 +10,7 @@ services:
   load_schema:
     image: chaitu1812/load-schema-rhel9
     environment:
+      component: "mongo"
       CODE_URL: "https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip"
       SCHEMA_FILE: "/app/db/master-data.js"
       MONGO_DB_ADDRESS: "mongodb"
@@ -39,6 +40,32 @@ services:
   redis:
     image: chaitu1812/redis-rhel9
     networks: *net
+
+  cart:
+    image: chaitu1812/cart-rhel9
+    networks: *net
+    environment:
+      REDIS_HOST: redis
+      CATALOGUE_HOST: catalogue
+      CATALOGUE_PORT: 8080
+    depends_on:
+      - redis
+      - catalogue
+
+  load_schema1:
+    image: chaitu1812/load-schema-rhel9
+    environment:
+      component: "mysql"
+      CODE_URL: "https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip"
+      SCHEMA_FILE: "/app/db"
+      MYSQL_ADDRESS: "mysql"
+    networks: *net
+    depends_on: [ "mongodb" ]
+
+  shipping:
+    image: chaitu1812/shipping-rhel9
+    networks: *net
+
 
 networks:
   expense:
