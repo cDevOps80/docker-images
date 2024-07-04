@@ -1,4 +1,4 @@
-if [ "${component}" == "mongo" ]; then
+if [ "${COMPONENT}" == "mongo" ]; then
 
 [ -z "${CODE_URL}" ] && echo "GIT_HUB_URL -- env parameter is missing" && exit 1
 [ -z "${SCHEMA_FILE}" ] && echo "SCHEMA_FILE -- env parameter is missing" && exit 1
@@ -11,7 +11,7 @@ mongosh --host ${MONGO_DB_ADDRESS} < ${SCHEMA_FILE}
 
 fi
 
-if [ "${component}" == "mysql" ]; then
+if [ "${COMPONENT}" == "mysql" ]; then
 
 [ -z "${CODE_URL}" ] && echo "GIT_HUB_URL -- env parameter is missing" && exit 1
 [ -z "${SCHEMA_FILE}" ] && echo "SCHEMA_FILE -- env parameter is missing" && exit 1

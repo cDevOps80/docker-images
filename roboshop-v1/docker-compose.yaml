@@ -3,19 +3,23 @@ services:
   frontend:
     image: chaitu1812/frontend-rhel9
     networks: &net ["expense"]
-    depends_on: ["catalogue","userd"]
+    depends_on: ["catalogue","userd","cart","shipping"]
     ports:
       - "80:80"
 
-  load_schema:
+  load_mongo:
     image: chaitu1812/load-schema-rhel9
     environment:
-      component: "mongo"
+      COMPONENT: "mongo"
       CODE_URL: "https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip"
       SCHEMA_FILE: "/app/db/master-data.js"
       MONGO_DB_ADDRESS: "mongodb"
     networks: *net
     depends_on: ["mongodb"]
+
+  mongodb:
+    image: chaitu1812/mongo-rhel9
+    networks: *net
 
   catalogue:
     image: chaitu1812/catalogue-rhel9
@@ -25,9 +29,7 @@ services:
       MONGO: "true"
       MONGO_URL: "mongodb://mongodb:27017/catalogue"
 
-  mongodb:
-    image: chaitu1812/mongo-rhel9
-    networks: *net
+
 
   userd:
     image: chaitu1812/user-rhel9
@@ -52,21 +54,31 @@ services:
       - redis
       - catalogue
 
-  load_schema1:
+  load_mysql:
     image: chaitu1812/load-schema-rhel9
     environment:
-      component: "mysql"
+      COMPONENT: "mysql"
       CODE_URL: "https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip"
       SCHEMA_FILE: "/app/db"
       MYSQL_ADDRESS: "mysql"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "RoboShop@1"
     networks: *net
-    depends_on: [ "mongodb" ]
+    depends_on: ["mysql"]
 
   shipping:
     image: chaitu1812/shipping-rhel9
     networks: *net
+    environment:
+      CART_ENDPOINT: "cart:8080"
+      DB_HOST: "mysql"
+    depends_on: ["mysql"]
 
+  mysql:
+    image: chaitu1812/mysql-rhel9
+    networks: *net
+    environment:
+      MYSQL_ROOT_PASSWORD: "RoboShop@1"
 
 networks:
-  expense:
-    external: true
+  roboshop: {}
