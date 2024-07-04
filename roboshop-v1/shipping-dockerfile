@@ -1,6 +1,6 @@
 FROM maven:latest
 WORKDIR /app
 ADD https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip .
-RUN unzip /tmp/shipping-v3.zip && \
+RUN unzip shipping-v3.zip && \
     mvn clean package
 CMD ["java","-jar","target/shipping-1.0.jar"]
