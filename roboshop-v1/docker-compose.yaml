@@ -1,58 +1,56 @@
 version: "3.4"
 services:
-#  frontend:
-#    image: chaitu1812/frontend-rhel9
-#    networks: &net ["roboshop"]
-#    depends_on: ["catalogue","userd","cart","shipping"]
-#    ports:
-#      - "80:80"
+  frontend:
+    image: chaitu1812/frontend-rhel9
+    networks: &net ["roboshop"]
+    depends_on: ["catalogue","userd","cart","shipping"]
+    ports:
+      - "80:80"
 
-#  load_mongo:
-#    image: chaitu1812/load-schema-rhel9
-#    environment:
-#      COMPONENT: "mongo"
-#      CODE_URL: "https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip"
-#      SCHEMA_FILE: "/app/db/master-data.js"
-#      MONGO_DB_ADDRESS: "mongodb"
-#    networks: *net
-#    depends_on: ["mongodb"]
-#
-#  mongodb:
-#    image: chaitu1812/mongo-rhel9
-#    networks: *net
-#
-#  catalogue:
-#    image: chaitu1812/catalogue-rhel9
-#    networks: *net
-#    depends_on: ["mongodb"]
-#    environment:
-#      MONGO: "true"
-#      MONGO_URL: "mongodb://mongodb:27017/catalogue"
+  load_mongo:
+    image: chaitu1812/load-schema-rhel9
+    environment:
+      COMPONENT: "mongo"
+      CODE_URL: "https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip"
+      SCHEMA_FILE: "/app/db/master-data.js"
+      MONGO_DB_ADDRESS: "mongodb"
+    networks: *net
+    depends_on: ["mongodb"]
 
+  mongodb:
+    image: chaitu1812/mongo-rhel9
+    networks: *net
 
+  catalogue:
+    image: chaitu1812/catalogue-rhel9
+    networks: *net
+    depends_on: ["mongodb"]
+    environment:
+      MONGO: "true"
+      MONGO_URL: "mongodb://mongodb:27017/catalogue"
 
-#  userd:
-#    image: chaitu1812/user-rhel9
-#    networks: *net
-#    depends_on: ["redis"]
-#    environment:
-#       REDIS_URL: redis://redis:6379
-#       MONGO_URL: "mongodb://mongodb:27017/users"
-#
-#  redis:
-#    image: chaitu1812/redis-rhel9
-#    networks: *net
+  userd:
+    image: chaitu1812/user-rhel9
+    networks: *net
+    depends_on: ["redis"]
+    environment:
+       REDIS_URL: redis://redis:6379
+       MONGO_URL: "mongodb://mongodb:27017/users"
 
-#  cart:
-#    image: chaitu1812/cart-rhel9
-#    networks: *net
-#    environment:
-#      REDIS_HOST: redis
-#      CATALOGUE_HOST: catalogue
-#      CATALOGUE_PORT: 8080
-#    depends_on:
-#      - redis
-#      - catalogue
+  redis:
+    image: chaitu1812/redis-rhel9
+    networks: *net
+
+  cart:
+    image: chaitu1812/cart-rhel9
+    networks: *net
+    environment:
+      REDIS_HOST: redis
+      CATALOGUE_HOST: catalogue
+      CATALOGUE_PORT: 8080
+    depends_on:
+      - redis
+      - catalogue
 
   load_mysql:
     image: chaitu1812/load-schema-rhel9
@@ -66,13 +64,13 @@ services:
     networks: &net ["roboshop"]
     depends_on: ["mysql"]
 
-#  shipping:
-#    image: chaitu1812/shipping-rhel9
-#    networks: *net
-#    environment:
-#      CART_ENDPOINT: cart:8080
-#      DB_HOST: mysql
-#    depends_on: ["mysql"]
+  shipping:
+    image: chaitu1812/shipping-rhel9
+    networks: *net
+    environment:
+      CART_ENDPOINT: cart:8080
+      DB_HOST: mysql
+    depends_on: ["mysql"]
 
   mysql:
     image: chaitu1812/mysql-rhel9
