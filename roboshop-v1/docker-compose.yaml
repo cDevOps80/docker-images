@@ -78,34 +78,34 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "RoboShop@1"
 
-#  rabbitmq:
-#    image: chaitu1812/rabbitmq-rhel9
-#    networks: *net
-#    environment:
-#      ENV RABBITMQ_DEFAULT_USER: user
-#      RABBITMQ_DEFAULT_PASS: roboshop123
-#
-#  payment:
-#    image: chaitu1812/payment-rhel9
-#    networks: *net
-#    environment:
-#      - CART_HOST=cart
-#      - CART_PORT=8080
-#      - USER_HOST=userd
-#      - USER_PORT=8080
-#      - AMQP_HOST=rabbitmq
-#      - AMQP_USER=roboshop
-#      - AMQP_PASS=roboshop123
-#    depends_on: ["rabbitmq"]
-#
-#  dispatch:
-#      image: chaitu1812/dispatch-rhel9
-#      networks: *net
-#      environment:
-#        - AMQP_HOST=rabbitmq
-#        - AMQP_USER=roboshop
-#        - AMQP_PASS=roboshop123
-#      depends_on: ["rabbitmq"]
+  rabbitmq:
+    image: chaitu1812/rabbitmq-rhel9
+    networks: *net
+    environment:
+      ENV RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: roboshop123
+
+  payment:
+    image: chaitu1812/payment-rhel9
+    networks: *net
+    environment:
+      - CART_HOST=cart
+      - CART_PORT=8080
+      - USER_HOST=userd
+      - USER_PORT=8080
+      - AMQP_HOST=rabbitmq
+      - AMQP_USER=roboshop
+      - AMQP_PASS=roboshop123
+    depends_on: ["rabbitmq"]
+
+  dispatch:
+      image: chaitu1812/dispatch-rhel9
+      networks: *net
+      environment:
+        - AMQP_HOST=rabbitmq
+        - AMQP_USER=roboshop
+        - AMQP_PASS=roboshop123
+      depends_on: ["rabbitmq"]
 
 networks:
   roboshop: {}
