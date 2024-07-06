@@ -6,8 +6,4 @@ RUN unzip dispatch.zip && \
     go mod init dispatch && \
     go get && \
     go build
-
-FROM golang:1.22-alpine
-WORKDIR /app
-COPY --from=build /app/dispatch .
-CMD ["./dispatch"]
+CMD ["/app/dispatch"]
