@@ -10,4 +10,4 @@ RUN unzip dispatch.zip && \
 FROM golang:1.22-alpine
 WORKDIR /app
 COPY --from=build /app/dispatch .
-CMD ["/app/dispatch"]
+CMD ["./dispatch"]
