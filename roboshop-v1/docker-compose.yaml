@@ -78,5 +78,13 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "RoboShop@1"
 
+  rabbitmq:
+    image: chaitu1812/rabbitmq-rhel9
+    networks: *net
+    environment:
+      ENV RABBITMQ_DEFAULT_USER: user
+
+
+
 networks:
   roboshop: {}
