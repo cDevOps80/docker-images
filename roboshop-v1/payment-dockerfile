@@ -1,0 +1,8 @@
+FROM  python:3.9.18-slim
+RUN apt update && apt install gcc unzip -y
+WORKDIR /app
+ADD  https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip .
+RUN unzip payment-v3.zip && \
+    rm -rf payment-v3.zip && \
+    pip3 install -r requirements.txt
+CMD ["/usr/local/bin/uwsgi", "--ini", "payment.ini"]
