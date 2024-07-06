@@ -82,7 +82,7 @@ services:
     image: chaitu1812/rabbitmq-rhel9
     networks: *net
     environment:
-      ENV RABBITMQ_DEFAULT_USER: user
+      ENV RABBITMQ_DEFAULT_USER: roboshop
       RABBITMQ_DEFAULT_PASS: roboshop123
 
   payment:
