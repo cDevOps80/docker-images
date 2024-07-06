@@ -3,7 +3,7 @@ services:
   frontend:
     image: chaitu1812/frontend-rhel9
     networks: &net ["roboshop"]
-    depends_on: ["catalogue","userd","cart","shipping"]
+    depends_on: ["catalogue","userd","cart","shipping","dispatch","payment"]
     ports:
       - "80:80"
 
