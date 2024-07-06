@@ -2,7 +2,5 @@ FROM golang:1.22
 RUN apt update && apt install unzip curl -y
 WORKDIR /app
 ADD  https://roboshop-artifacts.s3.amazonaws.com/dispatch.zip  .
-RUN go mod init dispatch && \
-    go get && \
-    go build
+RUN go mod init dispatch && go get && go build
 CMD ["/app/dispatch"]
