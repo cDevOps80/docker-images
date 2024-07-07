@@ -96,7 +96,7 @@ services:
       - AMQP_HOST=rabbitmq
       - AMQP_USER=roboshop
       - AMQP_PASS=roboshop123
-    depends_on: ["rabbitmq"]dock
+    depends_on: ["rabbitmq"]
 
   dispatch:
       image: chaitu1812/dispatch-rhel9
