@@ -82,7 +82,7 @@ services:
     image: chaitu1812/rabbitmq-rhel9
     networks: *net
     environment:
-      ENV RABBITMQ_DEFAULT_USER: roboshop
+      RABBITMQ_DEFAULT_USER: roboshop
       RABBITMQ_DEFAULT_PASS: roboshop123
 
   payment:
@@ -96,7 +96,7 @@ services:
       - AMQP_HOST=rabbitmq
       - AMQP_USER=roboshop
       - AMQP_PASS=roboshop123
-    depends_on: ["rabbitmq"]
+    depends_on: ["rabbitmq"]dock
 
   dispatch:
       image: chaitu1812/dispatch-rhel9
