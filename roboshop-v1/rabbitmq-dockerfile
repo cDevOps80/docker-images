@@ -1,2 +1,4 @@
 FROM rabbitmq:3.13
-# ENV RABBITMQ_DEFAULT_USER=user RABBITMQ_DEFAULT_PASS=password
+RUN rabbitmqctl add_user roboshop roboshop123 && \
+    rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+
