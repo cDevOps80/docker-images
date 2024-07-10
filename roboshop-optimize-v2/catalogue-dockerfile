@@ -1,0 +1,14 @@
+FROM alpine as build
+RUN apk update && apk add --no-cache curl unzip nodejs npm
+WORKDIR /app
+RUN curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip  && \
+    unzip /tmp/catalogue.zip && rm -rf /tmp/catalogue.zip && \
+    npm install
+
+
+FROM alpine
+RUN apk update && apk add nodejs npm
+WORKDIR /app
+COPY --from=build /app/server.js .
+COPY --from=build /app/node_modules node_modules
+CMD ["node","server.js"]
