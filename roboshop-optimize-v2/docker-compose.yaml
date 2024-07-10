@@ -1,0 +1,30 @@
+version: "3.4"
+services:
+  load_mysql:
+    image: chaitu1812/load-schema-rhel9
+    environment:
+      COMPONENT: "mysql"
+      CODE_URL: "https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip"
+      SCHEMA_FILE: "/app/db"
+      MYSQL_ADDRESS: "mysql"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "RoboShop@1"
+    networks: *net
+    depends_on: ["mysql"]
+
+  shipping:
+    image: chaitu1812/shipping-rhel9:opt
+    networks: *net
+    environment:
+      CART_ENDPOINT: localhost:8080
+      DB_HOST: mysql
+    depends_on: ["mysql"]
+
+  mysql:
+    image: chaitu1812/mysql-rhel9
+    networks: *net
+    environment:
+      MYSQL_ROOT_PASSWORD: "RoboShop@1"
+
+networks:
+  robo: {}
