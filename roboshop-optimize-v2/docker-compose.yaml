@@ -9,7 +9,7 @@ services:
       MYSQL_ADDRESS: "mysql"
       MYSQL_USER: "root"
       MYSQL_PASSWORD: "RoboShop@1"
-    networks: *net
+    networks: &net ["robo"]
     depends_on: ["mysql"]
 
   shipping:
