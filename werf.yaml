@@ -17,7 +17,7 @@ git:
   - url: https://github.com/cDevOps80/docker-images
     add: /
     to: /src/phantomjs
-
+    branch: main
 shell:
   beforeInstall:
     - apt-get update
