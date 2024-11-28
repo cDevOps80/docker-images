@@ -26,10 +26,10 @@ from: nginx:latest
 #    - debug:
 #        msg: 'End install'
 #
-#git:
-#  - add: /web
-#    to: /usr/share/nginx/html
-#    owner: nginx
+git:
+  - add: /web
+    to: /usr/share/nginx/html
+    owner: nginx
 
     #shell:
     #  beforeInstall:
