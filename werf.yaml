@@ -14,9 +14,9 @@ from: nginx:latest
 
 
 git:
-  - add: /root/chaitu
-    to: /chaitu
-    owner: root
+  - url: https://github.com/cDevOps80/docker-images
+    add: /
+    to: /src/phantomjs
 
 shell:
   beforeInstall:
