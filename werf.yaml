@@ -14,10 +14,11 @@ from: nginx:latest
 
 
 git:
-  - add: roboshop-v1
-    to: /roboshop-v1
-    owner: root
-    group: root
+  - url: https://github.com/your-repo/roboshop-v1.git  # Add your repository URL
+    branch: main
+    add: /
+    to: /app
+
 shell:
   beforeInstall:
     - apt-get update
