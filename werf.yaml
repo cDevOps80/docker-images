@@ -26,7 +26,9 @@ from: nginx:latest
 #    - debug:
 #        msg: 'End install'
 #
-
+git:
+  - add: roboshop-optimize-v2
+    to: /roboshop-optimize-v2
 
 shell:
   beforeInstall:
@@ -35,7 +37,6 @@ shell:
   install:
     - echo "Commands on the Install stage" >> /web/index2.html
     - echo "Installing ..."  >> /web/index2.html
-    - cp ./roboshop-optimize-v2 /roboshop-optimize-v2
   beforeSetup:
     - echo "Commands on the Before Setup stage" >> /web/index3.html
   setup:
