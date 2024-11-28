@@ -20,6 +20,8 @@ git:
 
 shell:
   beforeInstall:
+    - apt-get update
+    - apt-get install git -y
     - mkdir /web
     - echo "Commands on the Before Install stage" >> /web/index1.html
   install:
