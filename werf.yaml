@@ -14,7 +14,7 @@ from: nginx:latest
 
 
 git:
-  - url: https://github.com/cDevOps80/docker-images
+  - url: https://github.com/cDevOps80/docker-images.git
     add: /
     to: /src/phantomjs
     branch: main
