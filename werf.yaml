@@ -14,8 +14,8 @@ from: nginx:latest
 
 
 git:
-  - add: /tmp/docker-images/roboshop-optimize-v2
-    to: /roboshop-optimize-v2
+  - add: /tmp/docker-images/werf.yaml
+    to: /werf.yaml
     owner: root
 
 shell:
