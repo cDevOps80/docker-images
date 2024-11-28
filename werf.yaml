@@ -1,20 +1,44 @@
----
-project: demo
+project: kyc-project
 configVersion: 1
----
-image: dfrontend
-dockerfile: frontend-dockerfile
-context: roboshop-v1
----
-git:
-  - url: https://github.com/your-repo/roboshop-v1.git  # Add your repository URL
-    branch: main
-    add: /
-    to: /app
 
-shell:
-  beforeInstall:
-    - mkdir -p /app
-    - chmod -R 755 /app
- # Add actual test/setup commands
+#deploy:
+#  helmRelease: werf-test
+#  helmReleaseSlug: false
+#  namespace: default
+---
+#image: web-server
+#dockerfile: Dockerfile
+
+image: chaitu1812-web
+from: nginx:latest
+
+#ansible:
+#  install:
+#    - debug:
+#        msg: 'Start install'
+#    - file:
+#        path: /usr/share/nginx/html
+#        mode: 0755
+#    - file:
+#        path: /web
+#        state: directory
+#        mode: 0755
+#    - debug:
+#        msg: 'End install'
+#
+#git:
+#  - add: /web
+#    to: /usr/share/nginx/html
+#    owner: nginx
+
+    #shell:
+    #  beforeInstall:
+    #  - mkdir /web
+
+docker:
+  WORKDIR: /web
+  CMD: ["nginx", "-g", "daemon off;"]
+  EXPOSE: '80'
+  ENV:
+    BUILDER: werf-custom
 
