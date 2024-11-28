@@ -14,8 +14,8 @@ from: nginx:latest
 
 
 git:
-  - add: /tmp/docker-images/werf.yaml
-    to: /werf.yaml
+  - add: /web/index4.html
+    to: /tmp/index4.html
     owner: root
 
 shell:
