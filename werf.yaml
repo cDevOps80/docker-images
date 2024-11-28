@@ -30,14 +30,15 @@ from: nginx:latest
 
 shell:
   beforeInstall:
-    - echo "Commands on the Before Install stage"
+    - echo "Commands on the Before Install stage" >> /web/index1.html
   install:
-    - echo "Commands on the Install stage"
-    - echo "Installing ..."
+    - echo "Commands on the Install stage" >> /web/index2.html
+    - echo "Installing ..."  >> /web/index2.html
   beforeSetup:
-    - echo "Commands on the Before Setup stage"
+    - echo "Commands on the Before Setup stage" >> /web/index3.html
   setup:
-    - echo "Commands on the Setup stage"
+    - echo "Commands on the Setup stage" >> /web/index4.html
+
 
 
 docker:
