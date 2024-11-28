@@ -1,0 +1,11 @@
+---
+project: demo
+configVersion: 1
+
+
+gitWorktree:
+  forceShallowClone: true
+---
+image: dfrontend
+dockerfile: frontend-dockerfile
+context: roboshop-v1
