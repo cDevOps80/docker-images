@@ -26,14 +26,19 @@ from: nginx:latest
 #    - debug:
 #        msg: 'End install'
 #
-git:
-  - add: /web
-    to: /usr/share/nginx/html
-    owner: nginx
+
 
 shell:
   beforeInstall:
-    - mkdir /web
+    - echo "Commands on the Before Install stage"
+  install:
+    - echo "Commands on the Install stage"
+    - echo "Installing ..."
+  beforeSetup:
+    - echo "Commands on the Before Setup stage"
+  setup:
+    - echo "Commands on the Setup stage"
+
 
 docker:
   WORKDIR: /web
