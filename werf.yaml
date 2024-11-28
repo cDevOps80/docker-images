@@ -14,10 +14,10 @@ from: nginx:latest
 
 
 git:
-  - url: https://github.com/cDevOps80/docker-images.git
-    add: /
-    to: /src/phantomjs
-    branch: main
+  - add: roboshop-v1
+    to: /roboshop-v1
+    owner: root
+    group: root
 shell:
   beforeInstall:
     - apt-get update
