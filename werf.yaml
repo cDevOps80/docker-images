@@ -1,6 +1,7 @@
+---
 project: demo
 configVersion: 1
-
+---
 image: dfrontend
 dockerfile: frontend-dockerfile
 context: roboshop-v1
