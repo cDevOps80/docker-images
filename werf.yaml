@@ -30,6 +30,7 @@ from: nginx:latest
 
 shell:
   beforeInstall:
+    - mkidr /web
     - echo "Commands on the Before Install stage" >> /web/index1.html
   install:
     - echo "Commands on the Install stage" >> /web/index2.html
