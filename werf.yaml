@@ -31,9 +31,9 @@ git:
     to: /usr/share/nginx/html
     owner: nginx
 
-    shell:
-      beforeInstall:
-      - mkdir /web
+shell:
+  beforeInstall:
+    - mkdir /web
 
 docker:
   WORKDIR: /web
