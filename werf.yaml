@@ -5,6 +5,7 @@ configVersion: 1
 image: dfrontend
 dockerfile: frontend-dockerfile
 context: roboshop-v1
+---
 git:
   - url: https://github.com/your-repo/roboshop-v1.git  # Add your repository URL
     branch: main
