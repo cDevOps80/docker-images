@@ -9,3 +9,8 @@ gitWorktree:
 image: dfrontend
 dockerfile: frontend-dockerfile
 context: roboshop-v1
+
+git:
+  - url: https://github.com/cDevOps80/roboshop-shell.git
+    branch: main
+    add: /app
