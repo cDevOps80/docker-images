@@ -14,7 +14,7 @@ from: nginx:latest
 
 
 git:
-  - add: roboshop-optimize-v2
+  - add: /tmp/docker-images/roboshop-optimize-v2
     to: /roboshop-optimize-v2
     owner: root
 
