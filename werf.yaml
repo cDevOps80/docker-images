@@ -1,15 +1,18 @@
 ---
 project: demo
 configVersion: 1
-
-
-
 ---
 image: dfrontend
 dockerfile: frontend-dockerfile
 context: roboshop-v1
 
-git:
-- url: https://github.com/cDevOps80/roboshop-shell.git
-  branch: main
-  add: /app
+shell:
+  beforeInstall:
+    - echo "Commands on the Before Install stage"
+  install:
+    - echo "Commands on the Install stage"
+    - echo "Installing ..."
+  beforeSetup:
+    - echo "Commands on the Before Setup stage"
+  setup:
+    - echo "Commands on the Setup stage"
