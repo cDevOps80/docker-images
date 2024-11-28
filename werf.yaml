@@ -14,8 +14,8 @@ from: nginx:latest
 
 
 git:
-  - add: /web/index4.html
-    to: /tmp/index4.html
+  - add: /root/chaitu
+    to: /chaitu
     owner: root
 
 shell:
