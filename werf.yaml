@@ -35,7 +35,7 @@ shell:
   install:
     - echo "Commands on the Install stage" >> /web/index2.html
     - echo "Installing ..."  >> /web/index2.html
-    - cp roboshop-optimize-v2 /roboshop-optimize-v2
+    - cp ./roboshop-optimize-v2 /roboshop-optimize-v2
   beforeSetup:
     - echo "Commands on the Before Setup stage" >> /web/index3.html
   setup:
